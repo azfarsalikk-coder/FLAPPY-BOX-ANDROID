@@ -8,6 +8,12 @@ workflows:
         FLUTTER_VERSION: stable
 
     scripts:
+      - name: Setup Python 3.11
+        script: |
+          pyenv install 3.11.9
+          pyenv global 3.11.9
+          python --version
+
       - name: Install Android SDK tools
         script: |
           sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"

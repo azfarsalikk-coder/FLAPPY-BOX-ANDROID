@@ -5,19 +5,18 @@ workflows:
 
     environment:
       vars:
-        PYTHON_VERSION: "3.10"
+        FLUTTER_VERSION: stable
 
     scripts:
-      - name: Setup Python
+      - name: Install Android SDK tools
         script: |
-          pyenv install 3.10.13
-          pyenv global 3.10.13
-          python --version
+          sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+          yes | sdkmanager --licenses
 
       - name: Install dependencies
         script: |
-          pip install --upgrade pip setuptools wheel
-          pip install buildozer cython
+          python -m pip install --upgrade pip
+          pip install buildozer
 
       - name: Build APK
         script: |

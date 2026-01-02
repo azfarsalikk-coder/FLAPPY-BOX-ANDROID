@@ -1,0 +1,17 @@
+workflows:
+  android-build:
+    name: Build Flappy Box APK
+    max_build_duration: 60
+    environment:
+      vars:
+        FLUTTER_VERSION: stable
+    scripts:
+      - name: Install dependencies
+        script: |
+          pip install --upgrade pip
+          pip install buildozer
+      - name: Build APK
+        script: |
+          buildozer -v android debug
+    artifacts:
+      - buildozer/bin/*.apk

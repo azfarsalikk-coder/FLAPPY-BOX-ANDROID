@@ -5,18 +5,18 @@ workflows:
 
     environment:
       vars:
-        FLUTTER_VERSION: stable
+        PYTHON_VERSION: "3.10"
 
     scripts:
-      - name: Setup Python 3.11
+      - name: Setup Python
         script: |
-          pyenv install 3.11.9 || true
-          pyenv global 3.11.9
+          pyenv install 3.10.13
+          pyenv global 3.10.13
           python --version
 
       - name: Install dependencies
         script: |
-          pip install --upgrade pip
+          pip install --upgrade pip setuptools wheel
           pip install buildozer cython
 
       - name: Build APK
